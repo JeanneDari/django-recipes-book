@@ -21,13 +21,23 @@ DATA = {
 
 
 def omlet_view(request):
-    servings = int(request.GET.get('servings', 1))
-    return HttpResponse(f'тут будет рецепт омлета, кол-во порций = {servings}')
-
+    #servings = int(request.GET.get('servings', 1))
+    #return HttpResponse(f'тут будет рецепт омлета, кол-во порций = {servings}')
+    context = {
+        'omlet': DATA['omlet']
+    }
+    return render(request, 'omlet.html', context)
 
 def pasta_view(request):
-    return HttpResponse('тут будет рецепт пасты')
+    context = {
+        'pasta': DATA['pasta'],
+        'servings': int(request.GET.get('servings', 1))
+    }
+    return render(request, 'demo.html', context)
 
 
-def hello_view(request):
-    return render(request, 'demo.html')
+def buter_view(request):
+    context = {
+        'buter': DATA['buter']
+    }
+    return render(request, 'buter.html', context)

@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-Welcome to the Recipes Book!
+<p style="color: blue; font-size: 20px">
+
+    {% for x in pasta.keys %}
+    {{x}}
+    {% endfor %}
+
+    {% for x in pasta.values %}
+    {{x|floatformat:"2"*servings}}
+    {% endfor %}
+
+    {{servings}}
+
+</p>
 </body>
 </html>
