@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+
 DATA = {
     'omlet': {
         'яйца, шт': 2,
@@ -20,24 +19,14 @@ DATA = {
 }
 
 
-def omlet_view(request):
-    #servings = int(request.GET.get('servings', 1))
-    #return HttpResponse(f'тут будет рецепт омлета, кол-во порций = {servings}')
-    context = {
-        'omlet': DATA['omlet']
-    }
-    return render(request, 'omlet.html', context)
-
-def pasta_view(request):
-    context = {
-        'pasta': DATA['pasta'],
-        'servings': int(request.GET.get('servings', 1))
-    }
+def dish_view(request, dish):
+    quantity = int(request.GET.get('servings', 1))
+    new_dic = {}
+    ingr = list(DATA[dish].keys())
+    q = list(DATA[dish].values())
+    for i, ingredient in enumerate(ingr):
+        new_dic[ingredient] = q[i] * quantity
+    context = {'Рецепт': f'Рецепт блюда {dish}:', 'new_dic': new_dic}
     return render(request, 'demo.html', context)
 
 
-def buter_view(request):
-    context = {
-        'buter': DATA['buter']
-    }
-    return render(request, 'buter.html', context)

@@ -5,18 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<p style="color: blue; font-size: 20px">
-
-    {% for x in pasta.keys %}
-    {{x}}
+<p style="color: green; font-size: 20px">
+{{Рецепт}}
+<ul style="color: blue; font-size: 20px">
+    {% for x in new_dic.items %}
+            <li>{{ x }}</li>
     {% endfor %}
-
-    {% for x in pasta.values %}
-    {{x|floatformat:"2"*servings}}
-    {% endfor %}
-
-    {{servings}}
-
+</ul>
 </p>
 </body>
 </html>
